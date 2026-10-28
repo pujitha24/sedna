@@ -36,8 +36,10 @@ class UpdateStrategyByFinetune(BaseTaskUpdateDecision):
 
     def __init__(self, task_index, **kwargs):
         super(UpdateStrategyByFinetune, self).__init__(task_index)
-        self.attribute = kwargs.get("attribute").split(", ")
-        if not self.attribute:
+        attribute = kwargs.get("attribute")
+        if attribute:
+            self.attribute = attribute.split(", ")
+        else:
             self.attribute = ("real", "sim")
         self.city = kwargs.get("city", "berlin")
 
